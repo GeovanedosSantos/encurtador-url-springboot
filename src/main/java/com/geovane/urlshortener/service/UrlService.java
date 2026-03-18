@@ -1,6 +1,7 @@
 package com.geovane.urlshortener.service;
 
 import com.geovane.urlshortener.entity.Url;
+import com.geovane.urlshortener.exception.UrlNotFoundException;
 import com.geovane.urlshortener.repository.UrlRepository;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,7 @@ public class UrlService {
 
     public String getUrl(String shortCode) {
         Url url = repository.findByShortCode(shortCode)
-                .orElseThrow(() -> new RuntimeException("URL não Encontrada"));
+                .orElseThrow(() -> new UrlNotFoundException(shortCode));
 
         return url.getUrlOriginal();
 
