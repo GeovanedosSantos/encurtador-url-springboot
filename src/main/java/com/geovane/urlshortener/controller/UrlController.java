@@ -3,6 +3,7 @@ package com.geovane.urlshortener.controller;
 import com.geovane.urlshortener.dto.ShortenRequest;
 import com.geovane.urlshortener.entity.Url;
 import com.geovane.urlshortener.service.UrlService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class UrlController {
         this.service = service;
     }
     @PostMapping("/shorten")
-    public ResponseEntity<Url> shorten(@RequestBody ShortenRequest request) {
+    public ResponseEntity<Url> shorten(@Valid @RequestBody ShortenRequest request) {
         Url url = service.shortenUrl(request.urlOriginal());
         return ResponseEntity.status(201).body(url);
     }
