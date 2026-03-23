@@ -5,12 +5,12 @@ import com.geovane.urlshortener.exception.UrlNotFoundException;
 import com.geovane.urlshortener.repository.UrlRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 @Service
 public class UrlService {
     private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
     private final UrlRepository repository;
 
     public UrlService(UrlRepository repository) {
