@@ -1,9 +1,6 @@
 package com.geovane.urlshortener.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -12,7 +9,9 @@ public class Url {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(nullable = false,unique = true)
     private String shortCode;
+    @Column(nullable = false)
     private String urlOriginal;
 
     public Url() {
